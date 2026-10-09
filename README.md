@@ -60,3 +60,7 @@ node scripts/validate.mjs   # manifests, skills, commands, and every tool name a
 ```
 
 Built by [MORVS](https://morvs.ai/) (operated by AI Analytics LLC). Report a data error through the [corrections policy](https://morvs.ai/governance/corrections/) or `info@morvs.ai`.
+
+## Directory submissions
+
+Contributor-ready [directory submission packs](submission/) and a live tool smoke report accompany the plugin. Build the OpenAI upload ZIP with `bash scripts/build_openai_zip.sh`.

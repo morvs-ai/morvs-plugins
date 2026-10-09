@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-import { existsSync, readFileSync, readdirSync } from 'node:fs';
+import { existsSync, readFileSync, readdirSync, statSync } from 'node:fs';
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -13,6 +13,35 @@ const assert = (condition, message) => {
 };
 const isObject = (value) => value !== null && typeof value === 'object' && !Array.isArray(value);
 const isString = (value) => typeof value === 'string' && value.trim().length > 0;
+
+function checkBundleFiles() {
+  const readme = join(pluginRoot, 'README.md');
+  const license = join(pluginRoot, 'LICENSE');
+  assert(existsSync(readme), 'plugins/morvs/README.md is required');
+  assert(existsSync(license), 'plugins/morvs/LICENSE is required');
+  if (existsSync(readme)) {
+    const prose = readFileSync(readme, 'utf8').replace(/^\s*```[\s\S]*?^\s*```/gm, '');
+    const words = prose.match(/[\p{L}\p{N}][\p{L}\p{N}'’/-]*/gu) ?? [];
+    assert(words.length >= 40, `plugins/morvs/README.md needs at least 40 non-code words; found ${words.length}`);
+  }
+  if (existsSync(license)) {
+    assert(readFileSync(license, 'utf8') === readFileSync(join(root, 'LICENSE'), 'utf8'), 'Plugin LICENSE must match root LICENSE');
+  }
+  const walk = (dir) => {
+    for (const item of readdirSync(dir, { withFileTypes: true })) {
+      const path = join(dir, item.name);
+      const relative = path.slice(pluginRoot.length + 1);
+      assert(!['.DS_Store', 'Thumbs.db', 'desktop.ini', '__MACOSX'].includes(item.name), `System file in plugin bundle: ${relative}`);
+      if (item.isDirectory()) walk(path);
+      else if (item.isFile()) {
+        if (!/\.(?:png|jpe?g|gif|webp|svg|ico)$/i.test(item.name)) {
+          assert(statSync(path).size < 256 * 1024, `Plugin file exceeds 256 KiB: ${relative}`);
+        }
+      } else errors.push(`Unsupported plugin bundle entry: ${relative}`);
+    }
+  };
+  walk(pluginRoot);
+}
 
 function readJson(relativePath) {
   const path = join(root, relativePath);
@@ -61,12 +90,16 @@ function checkManifest() {
   for (const [label, manifest] of [['Claude plugin', claudePlugin], ['Codex plugin', codexPlugin]]) {
     if (!manifest) continue;
     for (const field of ['name', 'version', 'description', 'homepage', 'repository', 'license']) checkString(manifest, field, label);
-    assert(manifest.name === 'morvs' && manifest.version === '0.1.0', `${label} name/version must be morvs/0.1.0`);
+    assert(manifest.name === 'morvs' && /^\d+\.\d+\.\d+$/.test(manifest.version ?? ''), `${label} name/version must be morvs and a semantic version`);
     assert(manifest.homepage === 'https://morvs.ai/api/', `${label} homepage must link to the API`);
     assert(manifest.repository === 'https://github.com/morvs-ai/morvs-plugins', `${label} repository is incorrect`);
     assert(manifest.license === 'MIT', `${label} license must be MIT`);
     assert(manifest.author?.name === 'MORVS' && manifest.author?.email === 'info@morvs.ai' && manifest.author?.url === 'https://morvs.ai/', `${label} author is incomplete`);
     assert(Array.isArray(manifest.keywords) && manifest.keywords.length > 0 && manifest.keywords.every(isString), `${label} keywords must be a nonempty string array`);
+  }
+
+  if (claudePlugin && codexPlugin) {
+    assert(claudePlugin.version === codexPlugin.version, 'Claude and Codex plugin versions must match');
   }
 
   if (codexPlugin) {
@@ -75,7 +108,7 @@ function checkManifest() {
     for (const field of ['displayName', 'shortDescription', 'longDescription', 'developerName', 'category', 'websiteURL', 'privacyPolicyURL', 'termsOfServiceURL', 'brandColor', 'brandColorDark', 'composerIcon', 'logo', 'logoDark']) checkString(ui, field, `Codex plugin interface`);
     assert(ui?.displayName === 'MORVS' && ui?.developerName === 'MORVS' && ui?.category === 'Research', 'Codex plugin interface identity is incorrect');
     assert(ui?.capabilities?.includes('Read'), 'Codex plugin must advertise Read capability');
-    assert(ui?.websiteURL === 'https://morvs.ai/' && ui?.privacyPolicyURL === 'https://morvs.ai/governance/' && ui?.termsOfServiceURL === 'https://api.morvs.ai/license', 'Codex plugin policy links are incorrect');
+    assert(ui?.websiteURL === 'https://morvs.ai/' && ui?.privacyPolicyURL === 'https://morvs.ai/privacy/' && ui?.termsOfServiceURL === 'https://morvs.ai/terms/', 'Codex plugin policy links are incorrect');
     assert(ui?.brandColor === '#050607' && ui?.brandColorDark === '#EDF1F2', 'Codex plugin brand colors are incorrect');
     assert(Array.isArray(ui?.defaultPrompt) && ui.defaultPrompt.length === 3 && ui.defaultPrompt.every(isString), 'Codex plugin must have three short default prompts');
     for (const field of ['composerIcon', 'logo', 'logoDark']) {
@@ -211,6 +244,7 @@ async function toolsFromServer() {
   }
 }
 
+checkBundleFiles();
 checkManifest();
 const markdown = checkMarkdown();
 let tools;
@@ -230,5 +264,5 @@ if (errors.length) {
   for (const error of errors) console.error(`FAIL ${error}`);
   process.exitCode = 1;
 } else {
-  console.log(`PASS: 5 JSON manifests/configs, 4 skills, 3 commands, and all referenced MCP tools`);
+  console.log(`PASS: plugin README, LICENSE and bundle files; 5 JSON manifests/configs, 4 skills, 3 commands, and all referenced MCP tools`);
 }

@@ -1,0 +1,55 @@
+{
+  "recorded_at": "2026-10-09",
+  "client": "Codex CLI 0.160 (codex exec), MORVS MCP server https://api.morvs.ai/mcp",
+  "prompt": "Use the MORVS tools to resolve Pfizer's SEC identity, then check its FDA firm record and the local sanctions and debarment indexes. Answer in under 120 words with a short table of what each record shows and its date, and say that a no-match in a partial index is not clearance.",
+  "steps": [
+    {
+      "kind": "message",
+      "text": "I’ll resolve Pfizer in MORVS first, then check the FDA firm record and the two local indexes. I’ll report the dates shown by each record and keep the answer under 120 words."
+    },
+    {
+      "kind": "tool",
+      "server": "morvs",
+      "tool": "resolve",
+      "arguments": {
+        "q": "Pfizer"
+      },
+      "status": "completed",
+      "result_excerpt": "{\n  \"@context\": {\n    \"@vocab\": \"https://schema.org/\"\n  },\n  \"@type\": \"Thing\",\n  \"@id\": \"https://api.morvs.ai/api/v1/resolve?q=Pfizer\",\n  \"query\": {\n    \"q\": \"Pfizer\"\n  },\n  \"resolved\": true,\n  \"resolved_via\": \"name_alias\",\n  \"entity\": {\n    \"entity_id\": 8278,\n    \"canonical_name\": \"PFIZER INC\",\n    \"cik\": \"0000078003\",\n    \"ticker\": \"PFE\",\n    \"exchange\": \"NYSE\",\n    \"sic_code\": null,\n    \"sic_description\": null,\n    \"state\": null\n  },\n  \"aliases\": [\n    {\n      \"alias_text\": \"PFE\",\n      \"source\": \"ticker_alias\",\n      \"confidence\": 1\n    },\n    {\n      \"alias_text\": \"Pfizer\",\n      \"source\": \"ticker_alias\",\n      \"confidence\": 1\n    },\n    {\n      \"alias_text\": \"PFIZER INC\",\n      \"source\": \"sec.company\",\n      \"confidence\": 1\n    },\n    {\n      \"alias_text\": \"Pfizer Inc\",\n      \"source\": \"ticker_alias\",\n      \"confidence\": 1\n    },\n    {\n      \"alias_text\": \"Pfizer Inc.\",\n      \"source\": \"ticker_alias\",\n      \"confidence\": 1\n    },\n    {\n      \"alias_text\": \"Pfizer\",\n      \"source\": \"clinical.sponsor\",\n      \"confidence\": 0.9\n    }\n  ],\n  \"available_in\": {\n    \"cfpb_complaints\": false,\n    \"fda_recalls\": true,\n    \"osha_severe_injuries\": true,\n    \"nhtsa_complaints\": false,\n   "
+    },
+    {
+      "kind": "tool",
+      "server": "morvs",
+      "tool": "sanctions_check",
+      "arguments": {
+        "name": "PFIZER INC"
+      },
+      "status": "completed",
+      "result_excerpt": "{\n  \"@context\": {\n    \"@vocab\": \"https://schema.org/\",\n    \"dcterms\": \"http://purl.org/dc/terms/\"\n  },\n  \"@type\": \"Action\",\n  \"@id\": \"https://api.morvs.ai/api/v1/sanctions/check?name=PFIZER%20INC\",\n  \"_source\": {\n    \"data_provider\": \"AI Analytics\",\n    \"brand_name\": \"MORVS\",\n    \"brand_url\": \"https://morvs.ai/\",\n    \"primary_source\": \"https://sanctionslistservice.ofac.treas.gov/\",\n    \"primary_source_via\": \"https://www.opensanctions.org/datasets/us_ofac_sdn/\",\n    \"terms_of_use\": \"https://www.opensanctions.org/docs/bulk/\",\n    \"usage_info\": \"https://api.morvs.ai/license\",\n    \"rights\": \"MORVS does not relicense OFAC or OpenSanctions source material as CC0.\",\n    \"generated_at\": \"2026-10-09T23:45:02.885Z\",\n    \"dcterms:source\": \"https://sanctionslistservice.ofac.treas.gov/\"\n  },\n  \"name\": \"PFIZER INC\",\n  \"hit\": false,\n  \"primary_matches\": [],\n  \"alias_matches\": [],\n  \"_limitations\": {\n    \"scope\": \"Partial local OFAC SDN index only; other OFAC lists and non-listed restrictions are not covered.\",\n    \"matching\": \"Case-insensitive substring search of indexed names and aliases; not fuzzy or identity matching.\",\n    \"interpretation\": \"A hit is a possible name match requiring review. No"
+    },
+    {
+      "kind": "tool",
+      "server": "morvs",
+      "tool": "debarments_check",
+      "arguments": {
+        "name": "PFIZER INC"
+      },
+      "status": "completed",
+      "result_excerpt": "{\n  \"@context\": {\n    \"@vocab\": \"https://schema.org/\",\n    \"dcterms\": \"http://purl.org/dc/terms/\",\n    \"prov\": \"http://www.w3.org/ns/prov#\"\n  },\n  \"@type\": \"Action\",\n  \"@id\": \"https://api.morvs.ai/api/v1/debarments/check?name=PFIZER%20INC\",\n  \"_source\": {\n    \"data_provider\": \"AI Analytics\",\n    \"brand_name\": \"MORVS\",\n    \"brand_url\": \"https://morvs.ai/\",\n    \"data_provider_url\": \"https://api.morvs.ai\",\n    \"license\": \"https://creativecommons.org/publicdomain/zero/1.0/\",\n    \"dcterms:license\": \"https://creativecommons.org/publicdomain/zero/1.0/\",\n    \"generated_at\": \"2026-10-09T23:45:02.886Z\",\n    \"primary_source\": [\n      \"https://sam.gov/data-services/Exclusions/Public\",\n      \"https://oig.hhs.gov/exclusions/\"\n    ]\n  },\n  \"name\": \"PFIZER INC\",\n  \"hit\": false,\n  \"sam_federal_contractor_ban\": [],\n  \"hhs_oig_business_exclusions\": [],\n  \"hhs_oig_individual_exclusions\": []\n}"
+    },
+    {
+      "kind": "tool",
+      "server": "morvs",
+      "tool": "fda_firm_dossier",
+      "arguments": {
+        "name": "PFIZER INC"
+      },
+      "status": "completed",
+      "result_excerpt": "{\n  \"firm_pattern\": \"PFIZER INC\",\n  \"window_days\": 365,\n  \"note\": \"FDA dossier for one firm. Recalls + 510(k) clearances are matched on firm name; FAERS adverse events are matched best-effort on the patient_drugs_json field (some drug names contain firm names, some don't).\",\n  \"summary\": {\n    \"recalls\": 0,\n    \"class_i_recalls\": 0,\n    \"clearances\": 0,\n    \"adverse_events\": 0,\n    \"adverse_event_deaths\": 0\n  },\n  \"recalls\": [],\n  \"clearances\": [],\n  \"adverse_events\": [],\n  \"drug_labels\": [\n    {\n      \"set_id\": \"2b34d62d-e02a-4af3-bc0d-1571dd4ee76d\",\n      \"brand_name\": \"Lorbrena\",\n      \"generic_name\": \"LORLATINIB\",\n      \"product_type\": \"HUMAN PRESCRIPTION DRUG\",\n      \"route\": \"ORAL\",\n      \"effective_time\": \"20260626\",\n      \"substance_name\": \"LORLATINIB\",\n      \"indications_snippet\": \"1 INDICATIONS AND USAGE LORBRENA ® is indicated for the treatment of adult patients with metastatic non-small cell lung cancer (NSCLC) whose tumors are anaplastic lymphoma kinase (ALK)-positive as det\"\n    },\n    {\n      \"set_id\": \"6f1a9bd8-ee30-4c7d-932f-3fa8c4e087b6\",\n      \"brand_name\": \"Caduet\",\n      \"generic_name\": \"AMLODIPINE AND ATORVASTATIN\",\n      \"product_type\": \"HUMAN PRESCRIPTION DR"
+    },
+    {
+      "kind": "message",
+      "text": "| Record | What it shows | Date |\n|---|---|---|\n| [SEC identity](https://api.morvs.ai/api/v1/resolve?q=Pfizer) | **PFIZER INC**, ticker PFE, CIK 0000078003. | Checked Oct 9, 2026 |\n| [FDA firm dossier](https://api.morvs.ai/api/v1/fda/firm?name=PFIZER%20INC) | No recalls, 510(k) clearances, or adverse events matched in its 365-day window; drug labels are present. | Latest listed label: Jun 26, 2026 |\n| [Local OFAC SDN index](https://api.morvs.ai/api/v1/sanctions/check?name=PFIZER%20INC) | No name or alias match. | Checked Oct 9, 2026 |\n| [Local SAM/HHS OIG indexes](https://api.morvs.ai/api/v1/debarments/check?name=PFIZER%20INC) | No debarment or exclusion match. | Checked Oct 9, 2026 |\n\nThe indexes do not state an upstream update date. **A no-match in a partial index is not clearance.**"
+    }
+  ]
+}
