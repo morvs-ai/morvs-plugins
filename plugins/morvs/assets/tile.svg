@@ -1,0 +1,7 @@
+<!-- MORVS app tile. The flat inverse mark keeps its three-plane silhouette at 16px. -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="none">
+  <rect width="512" height="512" rx="96" fill="#050607"/>
+  <path d="M52 411V296L188 187V302L52 411Z" fill="#F1F2ED"/>
+  <path d="M242 88L303 129V326L242 285V88Z" fill="#F1F2ED"/>
+  <path d="M356 205L460 275V413L356 343V205Z" fill="#F1F2ED"/>
+</svg>

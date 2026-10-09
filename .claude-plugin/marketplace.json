@@ -1,0 +1,23 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "morvs",
+  "description": "Official MORVS plugins for Claude Code and Codex.",
+  "owner": {
+    "name": "MORVS",
+    "email": "info@morvs.ai"
+  },
+  "plugins": [
+    {
+      "name": "morvs",
+      "description": "Keyless access to MORVS public-records data for AI agents: US company filings, enforcement, recalls, sanctions and debarment screening, market signals and open datasets, with source-cited answers.",
+      "source": "./plugins/morvs",
+      "category": "data",
+      "homepage": "https://morvs.ai/api/",
+      "author": {
+        "name": "MORVS",
+        "email": "info@morvs.ai",
+        "url": "https://morvs.ai/"
+      }
+    }
+  ]
+}

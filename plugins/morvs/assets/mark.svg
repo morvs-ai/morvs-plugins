@@ -1,0 +1,7 @@
+<!-- MORVS flat mark. Three separated, rising planes; no gradients or raster effects.
+     The same geometry is used in the site, press assets, social cards, and icon. -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="none">
+  <path d="M52 411V296L188 187V302L52 411Z" fill="#101714"/>
+  <path d="M242 88L303 129V326L242 285V88Z" fill="#101714"/>
+  <path d="M356 205L460 275V413L356 343V205Z" fill="#101714"/>
+</svg>

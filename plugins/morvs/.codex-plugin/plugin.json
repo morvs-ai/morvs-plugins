@@ -1,0 +1,50 @@
+{
+  "name": "morvs",
+  "version": "0.1.0",
+  "description": "Keyless access to MORVS public-records data for AI agents: US company filings, enforcement, recalls, sanctions and debarment screening, market signals and open datasets, with source-cited answers.",
+  "author": {
+    "name": "MORVS",
+    "email": "info@morvs.ai",
+    "url": "https://morvs.ai/"
+  },
+  "homepage": "https://morvs.ai/api/",
+  "repository": "https://github.com/morvs-ai/morvs-plugins",
+  "license": "MIT",
+  "keywords": [
+    "public records",
+    "regulatory data",
+    "sec",
+    "fda",
+    "sanctions",
+    "compliance",
+    "due diligence",
+    "open data",
+    "mcp",
+    "morvs"
+  ],
+  "mcpServers": "./.mcp.json",
+  "interface": {
+    "displayName": "MORVS",
+    "shortDescription": "Source-linked US public records for agents",
+    "longDescription": "Research US companies and institutions across SEC filings, FDA recalls, federal enforcement, contracts, lobbying, courts and more through the keyless MORVS public-records server. Skills cite the record URL and primary source, state dataset freshness, and never treat a non-match as clearance.",
+    "developerName": "MORVS",
+    "category": "Research",
+    "capabilities": [
+      "Read"
+    ],
+    "websiteURL": "https://morvs.ai/",
+    "privacyPolicyURL": "https://morvs.ai/governance/",
+    "termsOfServiceURL": "https://api.morvs.ai/license",
+    "defaultPrompt": [
+      "Summarize Pfizer's regulatory record from the last six months",
+      "Screen a vendor against public sanctions and debarment lists",
+      "Find an open dataset on federal prison populations"
+    ],
+    "brandColor": "#050607",
+    "brandColorDark": "#EDF1F2",
+    "composerIcon": "./assets/tile.svg",
+    "logo": "./assets/tile.svg",
+    "logoDark": "./assets/mark-inverse.svg",
+    "screenshots": []
+  }
+}

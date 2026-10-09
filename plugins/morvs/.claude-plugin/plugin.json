@@ -1,0 +1,25 @@
+{
+  "name": "morvs",
+  "version": "0.1.0",
+  "description": "Keyless access to MORVS public-records data for AI agents: US company filings, enforcement, recalls, sanctions and debarment screening, market signals and open datasets, with source-cited answers.",
+  "author": {
+    "name": "MORVS",
+    "email": "info@morvs.ai",
+    "url": "https://morvs.ai/"
+  },
+  "homepage": "https://morvs.ai/api/",
+  "repository": "https://github.com/morvs-ai/morvs-plugins",
+  "license": "MIT",
+  "keywords": [
+    "public records",
+    "regulatory data",
+    "sec",
+    "fda",
+    "sanctions",
+    "compliance",
+    "due diligence",
+    "open data",
+    "mcp",
+    "morvs"
+  ]
+}
