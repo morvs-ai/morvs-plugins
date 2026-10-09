@@ -47,7 +47,7 @@ Try: *"Summarize Pfizer's regulatory record from the last six months"*, *"Screen
 - Experimental tools (for example `screen_all`) return indicative scores, not determinations.
 - Freshness varies by source; the agent checks `dataset_freshness` and states it.
 - Market tools are informational, not investment advice. Nothing here is legal advice.
-- Institution-level data only — no personal data.
+- Built for institution-level research. Some source filings name company officers or insiders as filed; the skills summarize at the issuer level and avoid personal details. Do not use it to profile private individuals.
 
 ## Data terms
 
