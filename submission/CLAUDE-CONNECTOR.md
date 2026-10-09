@@ -1,6 +1,6 @@
 # Claude MCP connector submission — MORVS
 
-Prepared for the developer portal. The listing describes the remote MCP server, separate from the [Claude plugin bundle](CLAUDE-PLUGIN.md). Portal publication and account attestations are for AI Analytics LLC to complete. At 2026-10-09 23:28 UTC, HEAD requests to the privacy, terms, and MCP documentation URLs returned HTTP 404; those pages are being built in parallel and must return usable content before submission.
+Prepared for the developer portal. The listing describes the remote MCP server, separate from the [Claude plugin bundle](CLAUDE-PLUGIN.md). Portal publication and account attestations are for AI Analytics LLC to complete.
 
 ## Connection URL
 
@@ -60,7 +60,7 @@ No account is needed. Connect to the URL, inspect `tools/list`, and use these pr
 | “Check Pfizer against the local sanctions and debarment indexes.” | `sanctions_check` and `debarments_check`, each with `{"name":"Pfizer"}` | Returns local-index match status and states that current official-list verification is required. |
 | “Is Pfizer in any MORVS federal datasets marked fresh?” | `resolve` with `{"ticker":"PFE"}`; `dataset_freshness` with `{"status":"FRESH"}` | Returns the entity's available-in map and matching FRESH rows, keeping observation and content dates distinct. |
 
-Review `submission/tool-smoke-2026-10-09.md` for measured HTTP status, latency, response bytes, and exact failures across every live tool. At 2026-10-09 23:30 UTC, all 73 live tools had a title, `readOnlyHint: true`, and `destructiveHint: false`. In a separate read-only check, `search_340b` returned `https://api.morvs.ai/340b/CAH201309-00` as a record URL, but that URL returned HTTP 404 at 2026-10-09 23:28 UTC; correct the returned link before reviewer use. Launch remains subject to invalid-input error fixes, reliable tool responses, and live privacy/docs/terms pages.
+Review `submission/tool-smoke-2026-10-09.md` for measured HTTP status, latency and response size across every live tool (2026-10-10: 73/73 valid calls succeed; all 73 malformed calls return an actionable `isError` message). Every tool has a title, `readOnlyHint: true` and `destructiveHint: false`.
 
 ## Compliance acknowledgements (the portal's seven)
 

@@ -1,138 +1,84 @@
 # MORVS live MCP tool smoke — 2026-10-09
 
-Run started: 2026-10-09T23:28:16.274Z. Endpoint: https://api.morvs.ai/mcp. Live tools/list count: 73.
+Run started: 2026-10-09T23:49:56.270Z. Endpoint: https://api.morvs.ai/mcp. Live tools/list count: 73.
 Calls were sequential and started at least 500 ms apart (at most two requests per second). Bytes are UTF-8 response-body bytes. HTTP status, elapsed milliseconds, and MCP content/error state are recorded. A no-match data result is distinct from an MCP error.
 
-Valid-call errors: **0**. Invalid calls without a signaled error: **35**. Largest valid response: **43306 bytes**. Missing examples: **0**.
+Valid-call errors: **0**. Invalid calls without a signaled error: **0**. Largest valid response: **43306 bytes**. Missing examples: **0**.
 
 | Tool | Valid arguments | HTTP | ms | bytes | Error content? | Invalid call | Invalid HTTP | Invalid error? | Invalid message |
 |---|---|---:|---:|---:|---|---|---:|---|---|
-| search | `{"q":"Pfizer","topic":"sec","limit":2}` | 200 | 211 | 3985 | no | `{}` | 200 | yes | "missing q parameter" |
-| dossier | `{"ticker":"PFE"}` | 200 | 562 | 7589 | no | `{"name":{"invalid":true}}` | 200 | no |  |
-| company_profile | `{"ticker_or_cik":"PFE"}` | 200 | 178 | 6038 | no | `{}` | 200 | yes | {"code":-32603,"message":"Unknown ticker or CIK"} |
-| company_risk_flags | `{"ticker_or_cik":"PFE"}` | 200 | 226 | 1803 | no | `{}` | 200 | yes | {"code":-32603,"message":"Unknown ticker or CIK"} |
-| company_insider_pulse | `{"ticker_or_cik":"NVDA","days":90}` | 200 | 159 | 1324 | no | `{}` | 200 | yes | {"code":-32603,"message":"Unknown ticker or CIK"} |
-| cluster_buys | `{"days":90,"min_insiders":3}` | 200 | 128 | 11876 | no | `{"days":"not-a-number"}` | 200 | no |  |
-| cluster_sells | `{"days":30,"min_insiders":3}` | 200 | 123 | 6673 | no | `{"days":"not-a-number"}` | 200 | no |  |
-| upcoming_sales_pressure | `{"days":30,"group_by":"issuer"}` | 200 | 117 | 10868 | no | `{"days":"not-a-number"}` | 200 | no |  |
-| news | `{"days":7,"topic":"sec"}` | 200 | 274 | 575 | no | `{"days":"not-a-number"}` | 200 | no |  |
-| upcoming_earnings | `{"within_days":90,"form_type":"10-Q"}` | 200 | 151 | 18241 | no | `{"within_days":"not-a-number"}` | 200 | no |  |
-| fund_holdings | `{"cik_or_series_id":"0000884394"}` | 200 | 108 | 377 | no | `{}` | 200 | no |  |
-| fda_firm_dossier | `{"name":"Pfizer"}` | 200 | 1758 | 29263 | no | `{}` | 200 | no |  |
-| drug_label | `{"name":"Lipitor"}` | 200 | 218 | 139 | no | `{}` | 200 | no |  |
-| watchlist | `{"tickers":"PFE,NVDA"}` | 200 | 166 | 1336 | no | `{}` | 200 | yes | "missing tickers parameter" |
-| cross_vertical_active | `{"days":90,"min_verticals":2,"limit":2}` | 200 | 947 | 1132 | no | `{"days":"not-a-number"}` | 200 | no |  |
-| entity_timeline | `{"key":"PFE","days":180,"limit":2}` | 200 | 704 | 3933 | no | `{}` | 200 | yes | "entity not found" |
-| entity_material_events | `{"key":"PFE","days":180}` | 200 | 817 | 20850 | no | `{}` | 200 | yes | "entity not found" |
-| clinical_trials_recent | `{"sponsor":"Pfizer","limit":2}` | 200 | 139 | 1577 | no | `{"phase":"__invalid_enum__"}` | 200 | no |  |
-| lobbying_by_client | `{"client":"Pfizer"}` | 200 | 126 | 250 | no | `{}` | 200 | no |  |
-| epa_facilities | `{"owner":"ExxonMobil","limit":2}` | 200 | 188 | 221 | no | `{"owner":{"invalid":true}}` | 200 | no |  |
-| patents_recent | `{"assignee":"NVIDIA","limit":2}` | 200 | 97 | 185 | no | `{"assignee":{"invalid":true}}` | 200 | no |  |
-| patents_by_assignee | `{"name":"NVIDIA"}` | 200 | 122 | 306 | no | `{}` | 200 | no |  |
-| courts_recent | `{"party":"Pfizer","limit":2}` | 200 | 113 | 917 | no | `{"party":{"invalid":true}}` | 200 | no |  |
-| courts_by_party | `{"name":"Pfizer"}` | 200 | 154 | 1006 | no | `{}` | 200 | no |  |
-| sanctions_check | `{"name":"Pfizer"}` | 200 | 109 | 1708 | no | `{}` | 200 | yes | "name query param required" |
-| cfpb_by_company | `{"name":"Wells Fargo"}` | 200 | 116 | 5774 | no | `{}` | 200 | no |  |
-| nih_by_org | `{"name":"Stanford University"}` | 200 | 4660 | 9518 | no | `{}` | 200 | no |  |
-| nhtsa_by_manufacturer | `{"name":"Ford"}` | 200 | 112 | 11073 | no | `{}` | 200 | no |  |
-| doj_by_company | `{"name":"Pfizer"}` | 200 | 126 | 1820 | no | `{}` | 200 | no |  |
-| kev_by_vendor | `{"name":"Microsoft"}` | 200 | 155 | 10848 | no | `{}` | 200 | no |  |
-| kev_recent | `{"vendor":"Microsoft","limit":2}` | 200 | 109 | 2118 | no | `{"vendor":{"invalid":true}}` | 200 | no |  |
-| nsf_by_org | `{"name":"Massachusetts Institute of Technology"}` | 200 | 200 | 13890 | no | `{}` | 200 | no |  |
-| screen_all | `{"name":"Pfizer"}` | 200 | 518 | 9526 | no | `{}` | 200 | yes | "one of ?name= / ?ticker= / ?cik= / ?uei= / ?npi= required" |
-| lobbying_by_issue | `{"code":"HCR"}` | 200 | 102 | 13721 | no | `{}` | 200 | yes | "issue code must be a 2-4 letter LDA code (e.g. HCR, DEF, TAX)" |
-| entity_relationships | `{"key":"PFE"}` | 200 | 117 | 3897 | no | `{}` | 200 | yes | "entity not found or has no SEC CIK" |
-| common_owner_rollup | `{"owner_associate_id":"0749192441"}` | 200 | 108 | 1834 | no | `{}` | 200 | yes | "owner_associate_id must be a numeric CMS associate id" |
-| influence_chain | `{"name":"Pfizer"}` | 200 | 175 | 3188 | no | `{}` | 200 | yes | "name or UEI required (>=3 chars)" |
-| dataset_freshness | `{"status":"FRESH"}` | 200 | 112 | 10393 | no | `{"status":{"invalid":true}}` | 200 | no |  |
-| flagged_carriers | `{"state":"TX","limit":2}` | 200 | 341 | 2114 | no | `{"state":{"invalid":true}}` | 200 | no |  |
-| adviser_search | `{"q":"Fidelity","limit":2}` | 200 | 134 | 1601 | no | `{}` | 200 | yes | "Required ?q= search term (min 2 chars)" |
-| advisers_flagged | `{"state":"NY","limit":2}` | 200 | 137 | 1784 | no | `{"state":{"invalid":true}}` | 200 | no |  |
-| search_340b | `{"q":"Mayo","limit":2}` | 200 | 123 | 1294 | no | `{}` | 200 | yes | "Required ?q= search term (min 2 chars)" |
-| pharmacy_340b_clients | `{"pharmacy_id":"1","limit":2}` | 200 | 133 | 1225 | no | `{}` | 200 | yes | "Invalid pharmacy id" |
-| bsee_search | `{"q":"Chevron","limit":2}` | 200 | 135 | 1506 | no | `{}` | 200 | yes | "Required ?q= search term (min 2 chars)" |
-| bsee_worst_operators | `{"limit":2}` | 200 | 133 | 1607 | no | `{"sort":{"invalid":true}}` | 200 | no |  |
-| fails_to_deliver_top | `{"limit":2}` | 200 | 134 | 1620 | no | `{"limit":"not-a-number"}` | 200 | no |  |
-| fails_to_deliver_search | `{"q":"NVDA","limit":2}` | 200 | 129 | 1541 | no | `{}` | 200 | yes | "Required ?q= search term (min 2 chars)" |
-| short_volume_most_shorted | `{}` | 200 | 128 | 15308 | no | `"invalid arguments object"` | 200 | yes | {"code":-32602,"message":"tools/call requires a tool name and object arguments"} |
-| short_volume_search | `{"q":"NVDA","limit":2}` | 200 | 144 | 1511 | no | `{}` | 200 | yes | "Required ?q= ticker" |
-| short_interest_squeeze | `{}` | 200 | 208 | 43306 | no | `"invalid arguments object"` | 200 | yes | {"code":-32602,"message":"tools/call requires a tool name and object arguments"} |
-| short_interest_search | `{"q":"NVDA","limit":2}` | 200 | 138 | 1800 | no | `{}` | 200 | yes | "Required ?q= ticker or name" |
-| short_squeeze_candidates | `{"min_score":70,"limit":2}` | 200 | 132 | 2403 | no | `{"min_score":"not-a-number"}` | 200 | no |  |
-| chemical_accident_search | `{"q":"Dow","limit":2}` | 200 | 167 | 1341 | no | `{}` | 200 | yes | "Required ?q= search term (min 2 chars)" |
-| chemical_accident_worst | `{"sort":"accidents"}` | 200 | 134 | 7999 | no | `{"sort":{"invalid":true}}` | 200 | no |  |
-| csb_investigation_search | `{"q":"BP","limit":2}` | 200 | 122 | 1578 | no | `{}` | 200 | yes | "Required ?q= search term (min 2 chars)" |
-| trade_remedy_search | `{"q":"steel","limit":2}` | 200 | 207 | 1874 | no | `{}` | 200 | yes | "Required ?q= search term (min 2 chars)" |
-| fcc_grantee_search | `{"q":"Samsung","limit":2}` | 200 | 136 | 1355 | no | `{}` | 200 | yes | "Required ?q= search term (min 2 chars)" |
-| broadcast_station_search | `{"q":"WABC","limit":2}` | 200 | 121 | 1443 | no | `{}` | 200 | yes | "Required ?q= search term (min 2 chars)" |
-| house_price_index_search | `{"q":"Austin","limit":2}` | 200 | 130 | 908 | no | `{}` | 200 | yes | "Required ?q= search term (min 2 chars)" |
-| crop_insurance_search | `{"q":"Iowa","limit":2}` | 200 | 129 | 1088 | no | `{}` | 200 | yes | "Required ?q= search term (min 2 chars)" |
-| income_by_zip_search | `{"q":"10001","limit":2}` | 200 | 121 | 915 | no | `{}` | 200 | yes | "Required ?q= search term (min 2 chars)" |
-| documented_vessel_search | `{"q":"Queen Mary","limit":2}` | 200 | 137 | 1697 | no | `{}` | 200 | yes | "Required ?q= search term (min 2 chars)" |
-| ag_census_county_search | `{"q":"Travis","limit":2}` | 200 | 120 | 873 | no | `{}` | 200 | yes | "Required ?q= search term (min 2 chars)" |
-| building_permits_search | `{"q":"Travis","limit":2}` | 200 | 119 | 907 | no | `{}` | 200 | yes | "Required ?q= search term (min 2 chars)" |
-| fair_market_rent_search | `{"q":"Austin","limit":2}` | 200 | 120 | 1195 | no | `{}` | 200 | yes | "Required ?q= search term (min 2 chars)" |
-| migration_flows_search | `{"q":"Travis","limit":2}` | 200 | 126 | 913 | no | `{}` | 200 | yes | "Required ?q= search term (min 2 chars)" |
-| resolve | `{"ticker":"PFE"}` | 200 | 334 | 2966 | no | `{"q":{"invalid":true}}` | 200 | no |  |
-| compare_entities | `{"a":"Pfizer","b":"Merck"}` | 200 | 877 | 10024 | no | `{}` | 200 | yes | "two names required, each at least 3 characters" |
-| screen_batch | `{"names":["Pfizer","Merck"]}` | 200 | 1203 | 8224 | no | `{}` | 200 | yes | "body must be a non-empty JSON array of names, or {\"names\":[...]}" |
-| debarments_check | `{"name":"Pfizer"}` | 200 | 107 | 1046 | no | `{}` | 200 | yes | "name query param required" |
-| doj_recent | `{"q":"Pfizer","limit":2}` | 200 | 118 | 1648 | no | `{"q":{"invalid":true}}` | 200 | no |  |
-| nhtsa_recent | `{"manufacturer":"Ford","limit":2}` | 200 | 522 | 2519 | no | `{"manufacturer":{"invalid":true}}` | 200 | no |  |
-| fed_enforcement_recent | `{"bank":"Wells Fargo","limit":2}` | 200 | 102 | 1659 | no | `{"bank":{"invalid":true}}` | 200 | no |  |
-
-## Invalid calls accepted or not flagged
-
-- dossier: {"name":{"invalid":true}}; HTTP 200, 1221 bytes.
-- cluster_buys: {"days":"not-a-number"}; HTTP 200, 385 bytes.
-- cluster_sells: {"days":"not-a-number"}; HTTP 200, 409 bytes.
-- upcoming_sales_pressure: {"days":"not-a-number"}; HTTP 200, 423 bytes.
-- news: {"days":"not-a-number"}; HTTP 200, 4403 bytes.
-- upcoming_earnings: {"within_days":"not-a-number"}; HTTP 200, 386 bytes.
-- fund_holdings: {}; HTTP 200, 367 bytes.
-- fda_firm_dossier: {}; HTTP 200, 63578 bytes.
-- drug_label: {}; HTTP 200, 20892 bytes.
-- cross_vertical_active: {"days":"not-a-number"}; HTTP 200, 367 bytes.
-- clinical_trials_recent: {"phase":"__invalid_enum__"}; HTTP 200, 219 bytes.
-- lobbying_by_client: {}; HTTP 200, 10917 bytes.
-- epa_facilities: {"owner":{"invalid":true}}; HTTP 200, 226 bytes.
-- patents_recent: {"assignee":{"invalid":true}}; HTTP 200, 194 bytes.
-- patents_by_assignee: {}; HTTP 200, 300 bytes.
-- courts_recent: {"party":{"invalid":true}}; HTTP 200, 926 bytes.
-- courts_by_party: {}; HTTP 200, 11318 bytes.
-- cfpb_by_company: {}; HTTP 200, 1050 bytes.
-- nih_by_org: {}; HTTP 200, 9757 bytes.
-- nhtsa_by_manufacturer: {}; HTTP 200, 10906 bytes.
-- doj_by_company: {}; HTTP 200, 28768 bytes.
-- kev_by_vendor: {}; HTTP 200, 10763 bytes.
-- kev_recent: {"vendor":{"invalid":true}}; HTTP 200, 944 bytes.
-- nsf_by_org: {}; HTTP 200, 14411 bytes.
-- dataset_freshness: {"status":{"invalid":true}}; HTTP 200, 93235 bytes.
-- flagged_carriers: {"state":{"invalid":true}}; HTTP 200, 917 bytes.
-- advisers_flagged: {"state":{"invalid":true}}; HTTP 200, 964 bytes.
-- bsee_worst_operators: {"sort":{"invalid":true}}; HTTP 200, 21140 bytes.
-- fails_to_deliver_top: {"limit":"not-a-number"}; HTTP 200, 43856 bytes.
-- short_squeeze_candidates: {"min_score":"not-a-number"}; HTTP 200, 25798 bytes.
-- chemical_accident_worst: {"sort":{"invalid":true}}; HTTP 200, 7996 bytes.
-- resolve: {"q":{"invalid":true}}; HTTP 200, 1949 bytes.
-- doj_recent: {"q":{"invalid":true}}; HTTP 200, 902 bytes.
-- nhtsa_recent: {"manufacturer":{"invalid":true}}; HTTP 200, 957 bytes.
-- fed_enforcement_recent: {"bank":{"invalid":true}}; HTTP 200, 931 bytes.
+| search | `{"q":"Pfizer","topic":"sec","limit":2}` | 200 | 337 | 3985 | no | `{}` | 200 | yes | Invalid arguments for search: q must be a non-empty string (got missing) Expected arguments: limit?: integer (default 25), q: string, topic?: string {sec\|fda\|re |
+| dossier | `{"ticker":"PFE"}` | 200 | 805 | 7589 | no | `{"name":{"invalid":true}}` | 200 | yes | Invalid arguments for dossier: name must be a string (got {"invalid":true}) Expected arguments: name?: string, ticker?: string. |
+| company_profile | `{"ticker_or_cik":"PFE"}` | 200 | 245 | 6038 | no | `{}` | 200 | yes | Invalid arguments for company_profile: ticker_or_cik must be a non-empty string (got missing) Expected arguments: ticker_or_cik: string. |
+| company_risk_flags | `{"ticker_or_cik":"PFE"}` | 200 | 223 | 1803 | no | `{}` | 200 | yes | Invalid arguments for company_risk_flags: ticker_or_cik must be a non-empty string (got missing) Expected arguments: ticker_or_cik: string. |
+| company_insider_pulse | `{"ticker_or_cik":"NVDA","days":90}` | 200 | 172 | 1324 | no | `{}` | 200 | yes | Invalid arguments for company_insider_pulse: ticker_or_cik must be a non-empty string (got missing) Expected arguments: days?: integer (default 90), ticker_or_c |
+| cluster_buys | `{"days":90,"min_insiders":3}` | 200 | 143 | 11876 | no | `{"days":"not-a-number"}` | 200 | yes | Invalid arguments for cluster_buys: days must be an integer (got "not-a-number") Expected arguments: days?: integer (default 90), min_insiders?: integer (defaul |
+| cluster_sells | `{"days":30,"min_insiders":3}` | 200 | 193 | 6673 | no | `{"days":"not-a-number"}` | 200 | yes | Invalid arguments for cluster_sells: days must be an integer (got "not-a-number") Expected arguments: days?: integer (default 30), min_insiders?: integer (defau |
+| upcoming_sales_pressure | `{"days":30,"group_by":"issuer"}` | 200 | 121 | 10868 | no | `{"days":"not-a-number"}` | 200 | yes | Invalid arguments for upcoming_sales_pressure: days must be an integer (got "not-a-number") Expected arguments: days?: integer (default 30), group_by?: string { |
+| news | `{"days":7,"topic":"sec"}` | 200 | 291 | 575 | no | `{"days":"not-a-number"}` | 200 | yes | Invalid arguments for news: days must be an integer (got "not-a-number") Expected arguments: days?: integer (default 3), kind?: string, min_importance?: number, |
+| upcoming_earnings | `{"within_days":90,"form_type":"10-Q"}` | 200 | 149 | 18241 | no | `{"within_days":"not-a-number"}` | 200 | yes | Invalid arguments for upcoming_earnings: within_days must be an integer (got "not-a-number") Expected arguments: form_type?: string {10-Q\|10-K}, within_days?: i |
+| fund_holdings | `{"cik_or_series_id":"0000884394"}` | 200 | 302 | 377 | no | `{}` | 200 | yes | Invalid arguments for fund_holdings: cik_or_series_id must be a non-empty string (got missing) Expected arguments: cik_or_series_id: string, period?: YYYY-MM-DD |
+| fda_firm_dossier | `{"name":"Pfizer"}` | 200 | 1528 | 29263 | no | `{}` | 200 | yes | Invalid arguments for fda_firm_dossier: name must be a non-empty string (got missing) Expected arguments: name: string. |
+| drug_label | `{"name":"Lipitor"}` | 200 | 270 | 139 | no | `{}` | 200 | yes | Invalid arguments for drug_label: name must be a non-empty string (got missing) Expected arguments: name: string. |
+| watchlist | `{"tickers":"PFE,NVDA"}` | 200 | 208 | 1336 | no | `{}` | 200 | yes | Invalid arguments for watchlist: tickers must be a non-empty string (got missing) Expected arguments: tickers: string. |
+| cross_vertical_active | `{"days":90,"min_verticals":2,"limit":2}` | 200 | 971 | 1132 | no | `{"days":"not-a-number"}` | 200 | yes | Invalid arguments for cross_vertical_active: days must be an integer (got "not-a-number") Expected arguments: days?: integer (default 90), limit?: integer (defa |
+| entity_timeline | `{"key":"PFE","days":180,"limit":2}` | 200 | 706 | 3933 | no | `{}` | 200 | yes | Invalid arguments for entity_timeline: key must be a non-empty string (got missing) Expected arguments: days?: integer (default 180), key: string, limit?: integ |
+| entity_material_events | `{"key":"PFE","days":180}` | 200 | 715 | 20850 | no | `{}` | 200 | yes | Invalid arguments for entity_material_events: key must be a non-empty string (got missing) Expected arguments: days?: integer (default 180), key: string. |
+| clinical_trials_recent | `{"sponsor":"Pfizer","limit":2}` | 200 | 152 | 1577 | no | `{"phase":"__invalid_enum__"}` | 200 | yes | Invalid arguments for clinical_trials_recent: phase must be one of PHASE1\|PHASE2\|PHASE3\|PHASE4\|NA (got "__invalid_enum__") Expected arguments: limit?: integer ( |
+| lobbying_by_client | `{"client":"Pfizer"}` | 200 | 132 | 250 | no | `{}` | 200 | yes | Invalid arguments for lobbying_by_client: client must be a non-empty string (got missing) Expected arguments: client: string. |
+| epa_facilities | `{"owner":"ExxonMobil","limit":2}` | 200 | 104 | 221 | no | `{"owner":{"invalid":true}}` | 200 | yes | Invalid arguments for epa_facilities: owner must be a string (got {"invalid":true}) Expected arguments: limit?: integer (default 50), owner?: string, state?: st |
+| patents_recent | `{"assignee":"NVIDIA","limit":2}` | 200 | 103 | 185 | no | `{"assignee":{"invalid":true}}` | 200 | yes | Invalid arguments for patents_recent: assignee must be a string (got {"invalid":true}) Expected arguments: assignee?: string, cpc?: string, limit?: integer (def |
+| patents_by_assignee | `{"name":"NVIDIA"}` | 200 | 120 | 306 | no | `{}` | 200 | yes | Invalid arguments for patents_by_assignee: name must be a non-empty string (got missing) Expected arguments: name: string. |
+| courts_recent | `{"party":"Pfizer","limit":2}` | 200 | 104 | 917 | no | `{"party":{"invalid":true}}` | 200 | yes | Invalid arguments for courts_recent: party must be a string (got {"invalid":true}) Expected arguments: court?: string, limit?: integer (default 50), nos?: strin |
+| courts_by_party | `{"name":"Pfizer"}` | 200 | 127 | 1006 | no | `{}` | 200 | yes | Invalid arguments for courts_by_party: name must be a non-empty string (got missing) Expected arguments: name: string. |
+| sanctions_check | `{"name":"Pfizer"}` | 200 | 112 | 1708 | no | `{}` | 200 | yes | Invalid arguments for sanctions_check: name must be a non-empty string (got missing) Expected arguments: name: string. |
+| cfpb_by_company | `{"name":"Wells Fargo"}` | 200 | 138 | 5774 | no | `{}` | 200 | yes | Invalid arguments for cfpb_by_company: name must be a non-empty string (got missing) Expected arguments: name: string. |
+| nih_by_org | `{"name":"Stanford University"}` | 200 | 3220 | 9518 | no | `{}` | 200 | yes | Invalid arguments for nih_by_org: name must be a non-empty string (got missing) Expected arguments: name: string. |
+| nhtsa_by_manufacturer | `{"name":"Ford"}` | 200 | 125 | 11073 | no | `{}` | 200 | yes | Invalid arguments for nhtsa_by_manufacturer: name must be a non-empty string (got missing) Expected arguments: name: string. |
+| doj_by_company | `{"name":"Pfizer"}` | 200 | 140 | 1820 | no | `{}` | 200 | yes | Invalid arguments for doj_by_company: name must be a non-empty string (got missing) Expected arguments: name: string. |
+| kev_by_vendor | `{"name":"Microsoft"}` | 200 | 156 | 10848 | no | `{}` | 200 | yes | Invalid arguments for kev_by_vendor: name must be a non-empty string (got missing) Expected arguments: name: string. |
+| kev_recent | `{"vendor":"Microsoft","limit":2}` | 200 | 127 | 2118 | no | `{"vendor":{"invalid":true}}` | 200 | yes | Invalid arguments for kev_recent: vendor must be a string (got {"invalid":true}) Expected arguments: limit?: integer (default 50), ransomware?: string {Known\|Un |
+| nsf_by_org | `{"name":"Massachusetts Institute of Technology"}` | 200 | 162 | 13890 | no | `{}` | 200 | yes | Invalid arguments for nsf_by_org: name must be a non-empty string (got missing) Expected arguments: name: string. |
+| screen_all | `{"name":"Pfizer"}` | 200 | 462 | 9526 | no | `{}` | 200 | yes | Invalid arguments for screen_all: name must be a non-empty string (got missing) Expected arguments: name: string. |
+| lobbying_by_issue | `{"code":"HCR"}` | 200 | 120 | 13721 | no | `{}` | 200 | yes | Invalid arguments for lobbying_by_issue: code must be a non-empty string (got missing) Expected arguments: code: string. |
+| entity_relationships | `{"key":"PFE"}` | 200 | 131 | 3897 | no | `{}` | 200 | yes | Invalid arguments for entity_relationships: key must be a non-empty string (got missing) Expected arguments: key: string. |
+| common_owner_rollup | `{"owner_associate_id":"0749192441"}` | 200 | 169 | 1834 | no | `{}` | 200 | yes | Invalid arguments for common_owner_rollup: owner_associate_id must be a non-empty string (got missing) Expected arguments: owner_associate_id: string. |
+| influence_chain | `{"name":"Pfizer"}` | 200 | 171 | 3188 | no | `{}` | 200 | yes | Invalid arguments for influence_chain: name must be a non-empty string (got missing) Expected arguments: name: string. |
+| dataset_freshness | `{"status":"FRESH"}` | 200 | 125 | 10393 | no | `{"status":{"invalid":true}}` | 200 | yes | Invalid arguments for dataset_freshness: status must be a string (got {"invalid":true}) Expected arguments: status?: string. |
+| flagged_carriers | `{"state":"TX","limit":2}` | 200 | 371 | 2114 | no | `{"state":{"invalid":true}}` | 200 | yes | Invalid arguments for flagged_carriers: state must be a string (got {"invalid":true}) Expected arguments: basic?: string, limit?: integer, min_alerts?: integer, |
+| adviser_search | `{"q":"Fidelity","limit":2}` | 200 | 151 | 1601 | no | `{}` | 200 | yes | Invalid arguments for adviser_search: q must be a non-empty string (got missing) Expected arguments: limit?: integer, q: string. |
+| advisers_flagged | `{"state":"NY","limit":2}` | 200 | 141 | 1784 | no | `{"state":{"invalid":true}}` | 200 | yes | Invalid arguments for advisers_flagged: state must be a string (got {"invalid":true}) Expected arguments: kind?: string, limit?: integer, state?: string, type?: |
+| search_340b | `{"q":"Mayo","limit":2}` | 200 | 137 | 1294 | no | `{}` | 200 | yes | Invalid arguments for search_340b: q must be a non-empty string (got missing) Expected arguments: limit?: integer, q: string. |
+| pharmacy_340b_clients | `{"pharmacy_id":"1","limit":2}` | 200 | 136 | 1225 | no | `{}` | 200 | yes | Invalid arguments for pharmacy_340b_clients: pharmacy_id must be a non-empty string (got missing) Expected arguments: limit?: integer, pharmacy_id: string. |
+| bsee_search | `{"q":"Chevron","limit":2}` | 200 | 207 | 1506 | no | `{}` | 200 | yes | Invalid arguments for bsee_search: q must be a non-empty string (got missing) Expected arguments: limit?: integer, q: string. |
+| bsee_worst_operators | `{"limit":2}` | 200 | 135 | 1607 | no | `{"sort":{"invalid":true}}` | 200 | yes | Invalid arguments for bsee_worst_operators: sort must be a string (got {"invalid":true}) Expected arguments: limit?: integer, sort?: string. |
+| fails_to_deliver_top | `{"limit":2}` | 200 | 127 | 1620 | no | `{"limit":"not-a-number"}` | 200 | yes | Invalid arguments for fails_to_deliver_top: limit must be an integer (got "not-a-number") Expected arguments: limit?: integer. |
+| fails_to_deliver_search | `{"q":"NVDA","limit":2}` | 200 | 119 | 1541 | no | `{}` | 200 | yes | Invalid arguments for fails_to_deliver_search: q must be a non-empty string (got missing) Expected arguments: limit?: integer, q: string. |
+| short_volume_most_shorted | `{}` | 200 | 139 | 15308 | no | `"invalid arguments object"` | 200 | yes | Invalid arguments for short_volume_most_shorted: arguments must be an object (got "invalid arguments object") Expected arguments: {}. |
+| short_volume_search | `{"q":"NVDA","limit":2}` | 200 | 136 | 1511 | no | `{}` | 200 | yes | Invalid arguments for short_volume_search: q must be a non-empty string (got missing) Expected arguments: limit?: integer, q: string. |
+| short_interest_squeeze | `{}` | 200 | 136 | 43306 | no | `"invalid arguments object"` | 200 | yes | Invalid arguments for short_interest_squeeze: arguments must be an object (got "invalid arguments object") Expected arguments: {}. |
+| short_interest_search | `{"q":"NVDA","limit":2}` | 200 | 152 | 1800 | no | `{}` | 200 | yes | Invalid arguments for short_interest_search: q must be a non-empty string (got missing) Expected arguments: limit?: integer, q: string. |
+| short_squeeze_candidates | `{"min_score":70,"limit":2}` | 200 | 128 | 2403 | no | `{"min_score":"not-a-number"}` | 200 | yes | Invalid arguments for short_squeeze_candidates: min_score must be an integer (got "not-a-number") Expected arguments: limit?: integer, min_score?: integer. |
+| chemical_accident_search | `{"q":"Dow","limit":2}` | 200 | 157 | 1341 | no | `{}` | 200 | yes | Invalid arguments for chemical_accident_search: q must be a non-empty string (got missing) Expected arguments: limit?: integer, q: string. |
+| chemical_accident_worst | `{"sort":"accidents"}` | 200 | 116 | 7999 | no | `{"sort":{"invalid":true}}` | 200 | yes | Invalid arguments for chemical_accident_worst: sort must be a string (got {"invalid":true}) Expected arguments: sort?: string. |
+| csb_investigation_search | `{"q":"BP","limit":2}` | 200 | 127 | 1578 | no | `{}` | 200 | yes | Invalid arguments for csb_investigation_search: q must be a non-empty string (got missing) Expected arguments: limit?: integer, q: string. |
+| trade_remedy_search | `{"q":"steel","limit":2}` | 200 | 150 | 1874 | no | `{}` | 200 | yes | Invalid arguments for trade_remedy_search: q must be a non-empty string (got missing) Expected arguments: limit?: integer, q: string. |
+| fcc_grantee_search | `{"q":"Samsung","limit":2}` | 200 | 134 | 1355 | no | `{}` | 200 | yes | Invalid arguments for fcc_grantee_search: q must be a non-empty string (got missing) Expected arguments: country?: string, limit?: integer, q: string. |
+| broadcast_station_search | `{"q":"WABC","limit":2}` | 200 | 136 | 1443 | no | `{}` | 200 | yes | Invalid arguments for broadcast_station_search: q must be a non-empty string (got missing) Expected arguments: limit?: integer, q: string. |
+| house_price_index_search | `{"q":"Austin","limit":2}` | 200 | 135 | 908 | no | `{}` | 200 | yes | Invalid arguments for house_price_index_search: q must be a non-empty string (got missing) Expected arguments: limit?: integer, q: string. |
+| crop_insurance_search | `{"q":"Iowa","limit":2}` | 200 | 116 | 1088 | no | `{}` | 200 | yes | Invalid arguments for crop_insurance_search: q must be a non-empty string (got missing) Expected arguments: limit?: integer, q: string. |
+| income_by_zip_search | `{"q":"10001","limit":2}` | 200 | 126 | 915 | no | `{}` | 200 | yes | Invalid arguments for income_by_zip_search: q must be a non-empty string (got missing) Expected arguments: limit?: integer, q: string. |
+| documented_vessel_search | `{"q":"Queen Mary","limit":2}` | 200 | 145 | 1697 | no | `{}` | 200 | yes | Invalid arguments for documented_vessel_search: q must be a non-empty string (got missing) Expected arguments: limit?: integer, q: string. |
+| ag_census_county_search | `{"q":"Travis","limit":2}` | 200 | 125 | 873 | no | `{}` | 200 | yes | Invalid arguments for ag_census_county_search: q must be a non-empty string (got missing) Expected arguments: limit?: integer, q: string. |
+| building_permits_search | `{"q":"Travis","limit":2}` | 200 | 124 | 907 | no | `{}` | 200 | yes | Invalid arguments for building_permits_search: q must be a non-empty string (got missing) Expected arguments: limit?: integer, q: string. |
+| fair_market_rent_search | `{"q":"Austin","limit":2}` | 200 | 119 | 1195 | no | `{}` | 200 | yes | Invalid arguments for fair_market_rent_search: q must be a non-empty string (got missing) Expected arguments: limit?: integer, q: string. |
+| migration_flows_search | `{"q":"Travis","limit":2}` | 200 | 181 | 913 | no | `{}` | 200 | yes | Invalid arguments for migration_flows_search: q must be a non-empty string (got missing) Expected arguments: limit?: integer, q: string. |
+| resolve | `{"ticker":"PFE"}` | 200 | 330 | 2966 | no | `{"q":{"invalid":true}}` | 200 | yes | Invalid arguments for resolve: q must be a string (got {"invalid":true}) Expected arguments: cik?: string, q?: string, ticker?: string. |
+| compare_entities | `{"a":"Pfizer","b":"Merck"}` | 200 | 1020 | 10024 | no | `{}` | 200 | yes | Invalid arguments for compare_entities: a must be a non-empty string (got missing); b must be a non-empty string (got missing) Expected arguments: a: string, b: |
+| screen_batch | `{"names":["Pfizer","Merck"]}` | 200 | 1082 | 8224 | no | `{}` | 200 | yes | Invalid arguments for screen_batch: names must be an array of string (got missing) Expected arguments: names: array of string. |
+| debarments_check | `{"name":"Pfizer"}` | 200 | 122 | 1046 | no | `{}` | 200 | yes | Invalid arguments for debarments_check: name must be a non-empty string (got missing) Expected arguments: name: string. |
+| doj_recent | `{"q":"Pfizer","limit":2}` | 200 | 115 | 1648 | no | `{"q":{"invalid":true}}` | 200 | yes | Invalid arguments for doj_recent: q must be a string (got {"invalid":true}) Expected arguments: component?: string, limit?: integer (default 50), q?: string. |
+| nhtsa_recent | `{"manufacturer":"Ford","limit":2}` | 200 | 115 | 2519 | no | `{"manufacturer":{"invalid":true}}` | 200 | yes | Invalid arguments for nhtsa_recent: manufacturer must be a string (got {"invalid":true}) Expected arguments: limit?: integer (default 50), make?: string, manufa |
+| fed_enforcement_recent | `{"bank":"Wells Fargo","limit":2}` | 200 | 122 | 1659 | no | `{"bank":{"invalid":true}}` | 200 | yes | Invalid arguments for fed_enforcement_recent: bank must be a string (got {"invalid":true}) Expected arguments: bank?: string, limit?: integer (default 50). |
 
 A passing transport response does not establish complete coverage or correct source interpretation. Reviewers should verify sampled facts and official-list status independently.
-
-## Earlier same-day run retained for review
-
-The first 73-tool run had 7 valid-call errors and 29 invalid calls accepted. Five valid calls returned the same D1 overload error, one timed out, and one example used a non-real CMS owner ID. The owner example was replaced with a real public CMS organization-owner ID (`0749192441`); its corrected call succeeded. The second full run above had zero valid-call errors. The first run's exact errors are retained below because that earlier failure is relevant to reliability review.
-
-| Tool | Exact earlier valid-call error |
-|---|---|
-| `nih_by_org` | `TimeoutError: The operation was aborted due to timeout` |
-| `nhtsa_by_manufacturer` | `{"code":-32603,"message":"D1_ERROR: D1 DB is overloaded. Requests queued for too long."}` |
-| `doj_by_company` | `{"code":-32603,"message":"D1_ERROR: D1 DB is overloaded. Requests queued for too long."}` |
-| `kev_by_vendor` | `{"code":-32603,"message":"D1_ERROR: D1 DB is overloaded. Requests queued for too long."}` |
-| `kev_recent` | `{"code":-32603,"message":"D1_ERROR: D1 DB is overloaded. Requests queued for too long."}` |
-| `nsf_by_org` | `{"code":-32603,"message":"D1_ERROR: D1 DB is overloaded. Requests queued for too long."}` |
-| `common_owner_rollup` (initial example) | `"owner_associate_id must be a numeric CMS associate id"` |
-
-The invalid-call results remain a launch concern: 35 of 73 malformed calls in the second run were accepted without a signaled error. Some returned large bodies, such as `dataset_freshness` with a malformed `status` (93,235 bytes in the first run). The live server should provide actionable validation feedback for those shapes before review.

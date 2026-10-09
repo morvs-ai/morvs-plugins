@@ -1,6 +1,6 @@
 # OpenAI plugin directory submission — MORVS
 
-Copy-ready listing for ChatGPT and Codex, pending only the video URL. ZIP upload is built from `plugins/morvs` with `bash scripts/build_openai_zip.sh`; the output name follows the Codex plugin manifest version. The plugin has no sign-in or local-file access. At 2026-10-09 23:28 UTC, HEAD requests to the listed privacy, terms, and MCP documentation URLs returned HTTP 404; those parallel pages need live verification before submission.
+Copy-ready listing for ChatGPT and Codex, pending only the video URL. ZIP upload is built from `plugins/morvs` with `bash scripts/build_openai_zip.sh`; the output name follows the Codex plugin manifest version. The plugin has no sign-in or local-file access.
 
 ## Listing fields
 
@@ -18,7 +18,7 @@ Copy-ready listing for ChatGPT and Codex, pending only the video URL. ZIP upload
 | Brand colors | Light `#050607`; dark `#EDF1F2` |
 | Authentication | None; public read-only data, no account or API key |
 | ZIP upload | `dist/morvs-plugin-0.1.1.zip` (build with `bash scripts/build_openai_zip.sh`) |
-| Video walkthrough URL | **Pending owner recording and upload.** Do not submit a placeholder or an unrelated page. |
+| Video walkthrough URL | Demo video: `dist/morvs-plugin-demo-2026-10-09.mp4` (local file; hosted URL pending). |
 
 **Data flow:** The only connector endpoint is `https://api.morvs.ai/mcp` over HTTPS. An agent sends its selected tool name and arguments, such as a company name, ticker, CIK, or search term. The bundle has no hooks, local scripts, credentials, or local file access. Skills may ask the agent to open returned public source links (official government pages, the MORVS dataset catalog) with the agent's own web tool, if it has one; the plugin itself contacts only the MORVS endpoint. Public source records can name officers or insiders, so answers should stay at the institution level.
 
