@@ -1,0 +1,55 @@
+name: MCP health
+
+# Hourly check of the live MORVS MCP server and the pages directory listings
+# link to. Opens (or updates) one issue labeled mcp-health when checks fail
+# and closes it when they pass again.
+on:
+  schedule:
+    - cron: '17 * * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+concurrency:
+  group: mcp-health
+  cancel-in-progress: false
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 20
+      - name: Run health checks
+        id: health
+        run: |
+          set +e
+          node scripts/health_check.mjs | tee health.log
+          echo "status=${PIPESTATUS[0]}" >> "$GITHUB_OUTPUT"
+      - name: Open or update the alert issue
+        if: steps.health.outputs.status != '0'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh label create mcp-health --color B60205 --description "MORVS MCP health check failing" 2>/dev/null || true
+          body="$(printf 'The hourly MORVS MCP health check failed at %s UTC.\n\n```\n%s\n```\n\nRun: %s/%s/actions/runs/%s' "$(date -u +%Y-%m-%dT%H:%MZ)" "$(tail -n 40 health.log)" "$GITHUB_SERVER_URL" "$GITHUB_REPOSITORY" "$GITHUB_RUN_ID")"
+          existing="$(gh issue list --label mcp-health --state open --json number --jq '.[0].number')"
+          if [ -n "$existing" ]; then
+            gh issue comment "$existing" --body "$body"
+          else
+            gh issue create --title "MORVS MCP health check failing" --label mcp-health --body "$body"
+          fi
+          exit 1
+      - name: Close the alert issue when healthy
+        if: steps.health.outputs.status == '0'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          for n in $(gh issue list --label mcp-health --state open --json number --jq '.[].number'); do
+            gh issue close "$n" --comment "Health checks passing again at $(date -u +%Y-%m-%dT%H:%MZ) UTC."
+          done
