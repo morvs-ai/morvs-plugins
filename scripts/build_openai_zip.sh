@@ -10,9 +10,10 @@ fi
 
 mkdir -p dist
 archive="dist/morvs-plugin-${version}.zip"
-find plugins/morvs -type f \
+# OpenAI expects the plugin folder itself at the top of the ZIP (morvs/...).
+(cd plugins && find morvs -type f \
   ! -name '.DS_Store' ! -name 'Thumbs.db' ! -name 'desktop.ini' \
-  ! -path '*/__MACOSX/*' -print | LC_ALL=C sort | zip -q -X -FS "$archive" -@
+  ! -path '*/__MACOSX/*' -print | LC_ALL=C sort | zip -q -X -FS "../$archive" -@)
 
 echo "$archive"
 unzip -Z1 "$archive"
