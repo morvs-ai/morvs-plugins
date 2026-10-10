@@ -84,7 +84,7 @@ function checkManifest() {
     assert(item?.name === 'morvs', 'Codex marketplace plugin name must be morvs');
     assert(item?.source?.source === 'local' && item?.source?.path === './plugins/morvs', 'Codex marketplace source must be the local plugin path');
     assert(item?.policy?.installation === 'AVAILABLE' && item?.policy?.authentication === 'ON_INSTALL', 'Codex marketplace policy is incomplete');
-    assert(item?.category === 'Research', 'Codex marketplace category must be Research');
+    assert(item?.category === 'Data & Analytics', 'Codex marketplace category must be Data & Analytics');
   }
 
   for (const [label, manifest] of [['Claude plugin', claudePlugin], ['Codex plugin', codexPlugin]]) {
@@ -106,7 +106,7 @@ function checkManifest() {
     assert(codexPlugin.mcpServers === './.mcp.json', 'Codex plugin mcpServers must point to ./.mcp.json');
     const ui = codexPlugin.interface;
     for (const field of ['displayName', 'shortDescription', 'longDescription', 'developerName', 'category', 'websiteURL', 'privacyPolicyURL', 'termsOfServiceURL', 'brandColor', 'brandColorDark', 'composerIcon', 'logo', 'logoDark']) checkString(ui, field, `Codex plugin interface`);
-    assert(ui?.displayName === 'MORVS' && ui?.developerName === 'MORVS' && ui?.category === 'Research', 'Codex plugin interface identity is incorrect');
+    assert(ui?.displayName === 'MORVS' && ui?.developerName === 'MORVS' && ui?.category === 'Data & Analytics' && ui?.supportURL === 'https://morvs.ai/contact/', 'Codex plugin interface identity is incorrect');
     assert(ui?.capabilities?.includes('Read'), 'Codex plugin must advertise Read capability');
     assert(ui?.websiteURL === 'https://morvs.ai/' && ui?.privacyPolicyURL === 'https://morvs.ai/privacy/' && ui?.termsOfServiceURL === 'https://morvs.ai/terms/', 'Codex plugin policy links are incorrect');
     assert(ui?.brandColor === '#050607' && ui?.brandColorDark === '#EDF1F2', 'Codex plugin brand colors are incorrect');

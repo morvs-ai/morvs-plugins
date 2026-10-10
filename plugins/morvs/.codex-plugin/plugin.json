@@ -1,6 +1,6 @@
 {
   "name": "morvs",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "Keyless access to MORVS public-records data for AI agents: US company filings, enforcement, recalls, sanctions and debarment screening, market signals and open datasets, with source-cited answers.",
   "author": {
     "name": "MORVS",
@@ -28,11 +28,12 @@
     "shortDescription": "Source-linked public records",
     "longDescription": "Research US companies and institutions across SEC filings, FDA recalls, federal enforcement, contracts, lobbying, courts and more through the keyless MORVS public-records server. Skills cite the record URL and primary source, state dataset freshness, and never treat a non-match as clearance.",
     "developerName": "MORVS",
-    "category": "Research",
+    "category": "Data & Analytics",
     "capabilities": [
       "Read"
     ],
     "websiteURL": "https://morvs.ai/",
+    "supportURL": "https://morvs.ai/contact/",
     "privacyPolicyURL": "https://morvs.ai/privacy/",
     "termsOfServiceURL": "https://morvs.ai/terms/",
     "defaultPrompt": [
