@@ -1,75 +1,265 @@
 {
-  "search": { "q": "Pfizer", "topic": "sec", "limit": 2 },
-  "dossier": { "ticker": "PFE" },
-  "company_profile": { "ticker_or_cik": "PFE" },
-  "company_risk_flags": { "ticker_or_cik": "PFE" },
-  "company_insider_pulse": { "ticker_or_cik": "NVDA", "days": 90 },
-  "cluster_buys": { "days": 90, "min_insiders": 3 },
-  "cluster_sells": { "days": 30, "min_insiders": 3 },
-  "upcoming_sales_pressure": { "days": 30, "group_by": "issuer" },
-  "news": { "days": 7, "topic": "sec" },
-  "upcoming_earnings": { "within_days": 90, "form_type": "10-Q" },
-  "fund_holdings": { "cik_or_series_id": "0000884394" },
-  "fda_firm_dossier": { "name": "Pfizer" },
-  "drug_label": { "name": "Lipitor" },
-  "watchlist": { "tickers": "PFE,NVDA" },
-  "cross_vertical_active": { "days": 90, "min_verticals": 2, "limit": 2 },
-  "entity_timeline": { "key": "PFE", "days": 180, "limit": 2 },
-  "entity_material_events": { "key": "PFE", "days": 180 },
-  "clinical_trials_recent": { "sponsor": "Pfizer", "limit": 2 },
-  "lobbying_by_client": { "client": "Pfizer" },
-  "epa_facilities": { "owner": "ExxonMobil", "limit": 2 },
-  "patents_recent": { "assignee": "NVIDIA", "limit": 2 },
-  "patents_by_assignee": { "name": "NVIDIA" },
-  "courts_recent": { "party": "Pfizer", "limit": 2 },
-  "courts_by_party": { "name": "Pfizer" },
-  "sanctions_check": { "name": "Pfizer" },
-  "cfpb_by_company": { "name": "Wells Fargo" },
-  "nih_by_org": { "name": "Stanford University" },
-  "nhtsa_by_manufacturer": { "name": "Ford" },
-  "doj_by_company": { "name": "Pfizer" },
-  "kev_by_vendor": { "name": "Microsoft" },
-  "kev_recent": { "vendor": "Microsoft", "limit": 2 },
-  "nsf_by_org": { "name": "Massachusetts Institute of Technology" },
-  "screen_all": { "name": "Pfizer" },
-  "lobbying_by_issue": { "code": "HCR" },
-  "entity_relationships": { "key": "PFE" },
-  "common_owner_rollup": { "owner_associate_id": "0749192441" },
-  "influence_chain": { "name": "Pfizer" },
-  "dataset_freshness": { "status": "FRESH" },
-  "flagged_carriers": { "state": "TX", "limit": 2 },
-  "adviser_search": { "q": "Fidelity", "limit": 2 },
-  "advisers_flagged": { "state": "NY", "limit": 2 },
-  "search_340b": { "q": "Mayo", "limit": 2 },
-  "pharmacy_340b_clients": { "pharmacy_id": "1", "limit": 2 },
-  "bsee_search": { "q": "Chevron", "limit": 2 },
-  "bsee_worst_operators": { "limit": 2 },
-  "fails_to_deliver_top": { "limit": 2 },
-  "fails_to_deliver_search": { "q": "NVDA", "limit": 2 },
+  "search": {
+    "q": "Pfizer",
+    "topic": "sec",
+    "limit": 2
+  },
+  "dossier": {
+    "ticker": "PFE"
+  },
+  "company_profile": {
+    "ticker_or_cik": "PFE"
+  },
+  "company_risk_flags": {
+    "ticker_or_cik": "PFE"
+  },
+  "company_insider_pulse": {
+    "ticker_or_cik": "NVDA",
+    "days": 90
+  },
+  "cluster_buys": {
+    "days": 90,
+    "min_insiders": 3
+  },
+  "cluster_sells": {
+    "days": 30,
+    "min_insiders": 3
+  },
+  "upcoming_sales_pressure": {
+    "days": 30,
+    "group_by": "issuer"
+  },
+  "news": {
+    "days": 7,
+    "topic": "sec"
+  },
+  "estimate_filing_dates": {
+    "within_days": 90,
+    "form_type": "10-Q"
+  },
+  "fund_holdings": {
+    "cik_or_series_id": "0000884394"
+  },
+  "fda_firm_dossier": {
+    "name": "Pfizer"
+  },
+  "drug_label": {
+    "name": "Lipitor"
+  },
+  "watchlist": {
+    "tickers": "PFE,NVDA"
+  },
+  "cross_vertical_active": {
+    "days": 90,
+    "min_verticals": 2,
+    "limit": 2
+  },
+  "entity_timeline": {
+    "key": "PFE",
+    "days": 180,
+    "limit": 2
+  },
+  "entity_material_events": {
+    "key": "PFE",
+    "days": 180
+  },
+  "clinical_trials_recent": {
+    "sponsor": "Pfizer",
+    "limit": 2
+  },
+  "lobbying_by_client": {
+    "client": "Pfizer"
+  },
+  "epa_facilities": {
+    "owner": "ExxonMobil",
+    "limit": 2
+  },
+  "patents_recent": {
+    "assignee": "NVIDIA",
+    "limit": 2
+  },
+  "patents_by_assignee": {
+    "name": "NVIDIA"
+  },
+  "courts_recent": {
+    "party": "Pfizer",
+    "limit": 2
+  },
+  "courts_by_party": {
+    "name": "Pfizer"
+  },
+  "sanctions_check": {
+    "name": "Pfizer"
+  },
+  "cfpb_by_company": {
+    "name": "Wells Fargo"
+  },
+  "nih_by_org": {
+    "name": "Stanford University"
+  },
+  "nhtsa_by_manufacturer": {
+    "name": "Ford"
+  },
+  "doj_by_company": {
+    "name": "Pfizer"
+  },
+  "kev_by_vendor": {
+    "name": "Microsoft"
+  },
+  "kev_recent": {
+    "vendor": "Microsoft",
+    "limit": 2
+  },
+  "nsf_by_org": {
+    "name": "Massachusetts Institute of Technology"
+  },
+  "screen_all": {
+    "name": "Pfizer"
+  },
+  "lobbying_by_issue": {
+    "code": "HCR"
+  },
+  "entity_relationships": {
+    "key": "PFE"
+  },
+  "common_owner_rollup": {
+    "owner_associate_id": "0749192441"
+  },
+  "influence_chain": {
+    "name": "Pfizer"
+  },
+  "dataset_freshness": {
+    "status": "FRESH"
+  },
+  "flagged_carriers": {
+    "state": "TX",
+    "limit": 2
+  },
+  "adviser_search": {
+    "q": "Fidelity",
+    "limit": 2
+  },
+  "advisers_flagged": {
+    "state": "NY",
+    "limit": 2
+  },
+  "search_340b": {
+    "q": "Mayo",
+    "limit": 2
+  },
+  "pharmacy_340b_clients": {
+    "pharmacy_id": "1",
+    "limit": 2
+  },
+  "bsee_search": {
+    "q": "Chevron",
+    "limit": 2
+  },
+  "bsee_worst_operators": {
+    "limit": 2
+  },
+  "fails_to_deliver_top": {
+    "limit": 2
+  },
+  "fails_to_deliver_search": {
+    "q": "NVDA",
+    "limit": 2
+  },
   "short_volume_most_shorted": {},
-  "short_volume_search": { "q": "NVDA", "limit": 2 },
+  "short_volume_search": {
+    "q": "NVDA",
+    "limit": 2
+  },
   "short_interest_squeeze": {},
-  "short_interest_search": { "q": "NVDA", "limit": 2 },
-  "short_squeeze_candidates": { "min_score": 70, "limit": 2 },
-  "chemical_accident_search": { "q": "Dow", "limit": 2 },
-  "chemical_accident_worst": { "sort": "accidents" },
-  "csb_investigation_search": { "q": "BP", "limit": 2 },
-  "trade_remedy_search": { "q": "steel", "limit": 2 },
-  "fcc_grantee_search": { "q": "Samsung", "limit": 2 },
-  "broadcast_station_search": { "q": "WABC", "limit": 2 },
-  "house_price_index_search": { "q": "Austin", "limit": 2 },
-  "crop_insurance_search": { "q": "Iowa", "limit": 2 },
-  "income_by_zip_search": { "q": "10001", "limit": 2 },
-  "documented_vessel_search": { "q": "Queen Mary", "limit": 2 },
-  "ag_census_county_search": { "q": "Travis", "limit": 2 },
-  "building_permits_search": { "q": "Travis", "limit": 2 },
-  "fair_market_rent_search": { "q": "Austin", "limit": 2 },
-  "migration_flows_search": { "q": "Travis", "limit": 2 },
-  "resolve": { "ticker": "PFE" },
-  "compare_entities": { "a": "Pfizer", "b": "Merck" },
-  "screen_batch": { "names": ["Pfizer", "Merck"] },
-  "debarments_check": { "name": "Pfizer" },
-  "doj_recent": { "q": "Pfizer", "limit": 2 },
-  "nhtsa_recent": { "manufacturer": "Ford", "limit": 2 },
-  "fed_enforcement_recent": { "bank": "Wells Fargo", "limit": 2 }
+  "short_interest_search": {
+    "q": "NVDA",
+    "limit": 2
+  },
+  "short_squeeze_candidates": {
+    "min_score": 70,
+    "limit": 2
+  },
+  "chemical_accident_search": {
+    "q": "Dow",
+    "limit": 2
+  },
+  "chemical_accident_worst": {
+    "sort": "accidents"
+  },
+  "csb_investigation_search": {
+    "q": "BP",
+    "limit": 2
+  },
+  "trade_remedy_search": {
+    "q": "steel",
+    "limit": 2
+  },
+  "fcc_grantee_search": {
+    "q": "Samsung",
+    "limit": 2
+  },
+  "broadcast_station_search": {
+    "q": "WABC",
+    "limit": 2
+  },
+  "house_price_index_search": {
+    "q": "Austin",
+    "limit": 2
+  },
+  "crop_insurance_search": {
+    "q": "Iowa",
+    "limit": 2
+  },
+  "income_by_zip_search": {
+    "q": "10001",
+    "limit": 2
+  },
+  "documented_vessel_search": {
+    "q": "Queen Mary",
+    "limit": 2
+  },
+  "ag_census_county_search": {
+    "q": "Travis",
+    "limit": 2
+  },
+  "building_permits_search": {
+    "q": "Travis",
+    "limit": 2
+  },
+  "fair_market_rent_search": {
+    "q": "Austin",
+    "limit": 2
+  },
+  "migration_flows_search": {
+    "q": "Travis",
+    "limit": 2
+  },
+  "resolve": {
+    "ticker": "PFE"
+  },
+  "compare_entities": {
+    "a": "Pfizer",
+    "b": "Merck"
+  },
+  "screen_batch": {
+    "names": [
+      "Pfizer",
+      "Merck"
+    ]
+  },
+  "debarments_check": {
+    "name": "Pfizer"
+  },
+  "doj_recent": {
+    "q": "Pfizer",
+    "limit": 2
+  },
+  "nhtsa_recent": {
+    "manufacturer": "Ford",
+    "limit": 2
+  },
+  "fed_enforcement_recent": {
+    "bank": "Wells Fargo",
+    "limit": 2
+  }
 }
