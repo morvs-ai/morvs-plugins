@@ -26,7 +26,7 @@ codex plugin add morvs@morvs
 
 **Claude Desktop and claude.ai** — Settings → Connectors → Add custom connector → `https://api.morvs.ai/mcp`
 
-**Any MCP client** — streamable HTTP at `https://api.morvs.ai/mcp`, no API key.
+**Any MCP client** — streamable HTTP at `https://api.morvs.ai/mcp`, no API key. Listed in the [official MCP Registry](https://registry.modelcontextprotocol.io/v0/servers?search=io.github.morvs-ai) as `io.github.morvs-ai/morvs`.
 
 ## What you get
 
