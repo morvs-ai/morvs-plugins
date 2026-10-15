@@ -267,5 +267,12 @@
   },
   "drone_product_lookup": {
     "q": "Mavic 3"
+  },
+  "data_broker_check": {
+    "name": "Acxiom"
+  },
+  "data_broker_diff": {
+    "year_a": "2025",
+    "year_b": "2026"
   }
 }
