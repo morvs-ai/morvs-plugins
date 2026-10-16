@@ -274,5 +274,12 @@
   "data_broker_diff": {
     "year_a": "2025",
     "year_b": "2026"
+  },
+  "forced_labor_company_check": {
+    "name": "Baoding LYSZD Trade and Business Co., Ltd."
+  },
+  "forced_labor_source_compare": {
+    "source_a": "dhs",
+    "source_b": "cbp"
   }
 }
