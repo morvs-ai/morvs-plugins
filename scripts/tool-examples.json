@@ -281,5 +281,15 @@
   "forced_labor_source_compare": {
     "source_a": "dhs",
     "source_b": "cbp"
+  },
+  "pfas_system_lookup": {
+    "pwsid": "IA9778054"
+  },
+  "pfas_rule_impact": {
+    "scenario": "if_proposals_final",
+    "state": "IA"
+  },
+  "pfas_system_history": {
+    "pwsid": "IA9778054"
   }
 }
