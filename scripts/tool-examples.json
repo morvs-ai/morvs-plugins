@@ -291,5 +291,11 @@
   },
   "pfas_system_history": {
     "pwsid": "IA9778054"
+  },
+  "data_demand_source": {
+    "source": "verizon"
+  },
+  "data_demand_compare": {
+    "sector": "carrier"
   }
 }

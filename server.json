@@ -3,7 +3,7 @@
   "name": "io.github.morvs-ai/morvs",
   "title": "MORVS",
   "description": "Keyless, read-only US public records for agents: SEC, FDA, enforcement, sanctions, market data.",
-  "version": "0.1.8",
+  "version": "0.1.9",
   "websiteUrl": "https://morvs.ai/api/mcp/",
   "repository": {
     "url": "https://github.com/morvs-ai/morvs-plugins",
