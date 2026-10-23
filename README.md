@@ -32,7 +32,7 @@ codex plugin add morvs@morvs
 
 | Part | What it does |
 |---|---|
-| MCP server `morvs` | 82 read-only tools over SEC, FDA, DOJ, CFPB, OFAC, SAM, HHS OIG, NHTSA, EPA, USPTO, courts, lobbying, FINRA, the Drone Register, the California Data Broker Register, the U.S. Forced Labor Company Register, the PFAS Drinking-Water Register and more |
+| MCP server `morvs` | 84 read-only tools over SEC, FDA, DOJ, CFPB, OFAC, SAM, HHS OIG, NHTSA, EPA, USPTO, courts, lobbying, FINRA, the Drone Register, the California Data Broker Register, the U.S. Forced Labor Company Register, the PFAS Drinking-Water Register, the Government Data Demand Register and more |
 | Skill `public-records-research` | Resolve an entity, build a dated timeline or dossier, cite each record |
 | Skill `compliance-screening` | Sanctions, debarment and complaint checks with coverage caveats and official-list verification |
 | Skill `market-signals` | Insider activity, FINRA short data and fails-to-deliver, as dated evidence |
