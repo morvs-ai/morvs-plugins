@@ -297,5 +297,20 @@
   },
   "data_demand_compare": {
     "sector": "carrier"
+  },
+  "plate_reader_decisions": {
+    "state": "TX",
+    "vendor": "Flock Safety",
+    "limit": 5
+  },
+  "plate_reader_state_law": {
+    "state": "VA"
+  },
+  "federal_file_search": {
+    "query": "passport",
+    "limit": 5
+  },
+  "federal_file_system": {
+    "id": "SSA:60-0058"
   }
 }
