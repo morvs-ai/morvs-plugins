@@ -369,5 +369,21 @@
   },
   "china_ai_us_lists": {
     "tier": "A"
+  },
+  "election_equipment_jurisdiction": {
+    "state": "GA",
+    "jurisdiction": "Fulton"
+  },
+  "election_voting_systems": {
+    "list": "certified",
+    "eol_notice": true,
+    "limit": 5
+  },
+  "breach_notices": {
+    "state": "WA",
+    "organization": "Conduent"
+  },
+  "breach_notice_organization": {
+    "organization": "TransUnion"
   }
 }
