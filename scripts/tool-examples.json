@@ -335,5 +335,25 @@
   "mdl_lookup": {
     "query": "social media",
     "limit": 5
+  },
+  "forfeiture_agency": {
+    "state": "CA",
+    "agency": "Los Angeles Police"
+  },
+  "forfeiture_payments": {
+    "fy": 2025,
+    "state": "TX",
+    "limit": 5
+  },
+  "self_driving_company": {
+    "company": "Waymo"
+  },
+  "self_driving_reports": {
+    "kind": "ADS",
+    "year_received": 2026,
+    "limit": 5
+  },
+  "nhtsa_automation_investigations": {
+    "status": "open"
   }
 }
