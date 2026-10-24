@@ -312,5 +312,28 @@
   },
   "federal_file_system": {
     "id": "SSA:60-0058"
+  },
+  "lobbying_client": {
+    "client": "Anthropic"
+  },
+  "wiretap_orders": {
+    "report_year": 2025,
+    "state": "CALIFORNIA",
+    "limit": 5
+  },
+  "national_security_surveillance": {
+    "series": "section_702_targets"
+  },
+  "judgment_fund_payments": {
+    "fy": 2026,
+    "agency": "Ocean Energy",
+    "limit": 5
+  },
+  "judgment_fund_payee": {
+    "payee": "Bluepoint"
+  },
+  "mdl_lookup": {
+    "query": "social media",
+    "limit": 5
   }
 }
