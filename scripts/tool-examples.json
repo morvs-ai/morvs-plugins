@@ -355,5 +355,19 @@
   },
   "nhtsa_automation_investigations": {
     "status": "open"
+  },
+  "prediction_market_filings": {
+    "exchange": "KEX",
+    "limit": 5
+  },
+  "prediction_market_exchange": {
+    "exchange": "Polymarket"
+  },
+  "china_ai_filings": {
+    "q": "DeepSeek",
+    "limit": 5
+  },
+  "china_ai_us_lists": {
+    "tier": "A"
   }
 }
