@@ -439,5 +439,16 @@
   "foreign_agents_principal": {
     "name": "Public Investment Fund"
   },
-  "foreign_agents_enforcement": {}
+  "foreign_agents_enforcement": {},
+  "inaugural_donors_summary": {},
+  "inaugural_donors_donor": {
+    "name": "Microsoft"
+  },
+  "super_pac_donors_summary": {},
+  "super_pac_donors_donor": {
+    "name": "Coinbase"
+  },
+  "super_pac_donors_recipient": {
+    "committee": "Fairshake"
+  }
 }
