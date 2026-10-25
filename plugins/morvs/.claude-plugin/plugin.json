@@ -1,7 +1,7 @@
 {
   "name": "morvs",
   "displayName": "MORVS",
-  "version": "0.1.17",
+  "version": "0.1.18",
   "description": "Keyless access to MORVS public-records data for AI agents: US company filings, enforcement, recalls, sanctions and debarment screening, market signals and open datasets, with source-cited answers.",
   "author": {
     "name": "MORVS",
