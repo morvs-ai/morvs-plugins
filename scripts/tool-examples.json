@@ -385,5 +385,19 @@
   },
   "breach_notice_organization": {
     "organization": "TransUnion"
+  },
+  "sanctuary_doj_list": {
+    "q": "Minnesota"
+  },
+  "sanctuary_state_reports": {
+    "state": "CA",
+    "agency": "Los Angeles"
+  },
+  "police_grant_awards": {
+    "fy": 2026,
+    "limit": 5
+  },
+  "police_grant_recipient": {
+    "recipient": "Chicago"
   }
 }
