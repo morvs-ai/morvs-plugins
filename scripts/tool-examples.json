@@ -410,5 +410,22 @@
   },
   "ukraine_money_recipient": {
     "q": "Lockheed"
+  },
+  "pay_to_play_contractor": {
+    "company": "GEO Group"
+  },
+  "pay_to_play_totals": {
+    "component": "CBP",
+    "fy": 2026
+  },
+  "pay_to_play_committees": {
+    "cycle": 2026,
+    "company": "GEO",
+    "limit": 5
+  },
+  "pay_to_play_awards": {
+    "component": "ICE",
+    "fy": 2026,
+    "limit": 5
   }
 }
