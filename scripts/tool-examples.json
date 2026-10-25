@@ -427,5 +427,17 @@
     "component": "ICE",
     "fy": 2026,
     "limit": 5
-  }
+  },
+  "foreign_agents_summary": {},
+  "foreign_agents_country": {
+    "country": "Saudi Arabia",
+    "year": 2025
+  },
+  "foreign_agents_registrant": {
+    "name": "Akin"
+  },
+  "foreign_agents_principal": {
+    "name": "Public Investment Fund"
+  },
+  "foreign_agents_enforcement": {}
 }
