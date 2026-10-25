@@ -399,5 +399,16 @@
   },
   "police_grant_recipient": {
     "recipient": "Chicago"
+  },
+  "border_force_area": {
+    "area": "Grand Forks",
+    "fiscal_year": 2026
+  },
+  "border_force_national": {},
+  "ukraine_money_totals": {
+    "view": "stages"
+  },
+  "ukraine_money_recipient": {
+    "q": "Lockheed"
   }
 }
