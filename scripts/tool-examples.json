@@ -471,5 +471,17 @@
   },
   "arms_sales_buyer": {
     "name": "United Kingdom"
+  },
+  "media_money_summary": {},
+  "media_money_family": {
+    "name": "Politico"
+  },
+  "media_money_terminations": {
+    "family": "Politico",
+    "window": "since"
+  },
+  "media_money_advertising": {
+    "agency": "DHS",
+    "fiscal_year": 2025
   }
 }
