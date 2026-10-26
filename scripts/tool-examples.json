@@ -460,5 +460,16 @@
   },
   "migrant_programs_program": {
     "program": "orr_uc"
+  },
+  "arms_sales_summary": {},
+  "arms_sales_notices": {
+    "buyer": "Poland",
+    "year": 2023
+  },
+  "arms_sales_contractor": {
+    "name": "Lockheed"
+  },
+  "arms_sales_buyer": {
+    "name": "United Kingdom"
   }
 }
