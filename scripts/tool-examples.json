@@ -483,5 +483,15 @@
   "media_money_advertising": {
     "agency": "DHS",
     "fiscal_year": 2025
+  },
+  "drug_money_summary": {},
+  "drug_money_company": {
+    "name": "Pfizer"
+  },
+  "drug_money_drug": {
+    "name": "Eliquis"
+  },
+  "drug_money_agreements": {
+    "company": "Novo"
   }
 }
