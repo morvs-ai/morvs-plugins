@@ -59,9 +59,9 @@ const checks = [
     if (result.serverInfo?.name !== 'morvs') throw new Error(`serverInfo.name is ${result.serverInfo?.name}`);
   }],
   ['ping answers', async () => { await rpc('ping'); }],
-  ['tools/list has 145 read-only tools', async () => {
+  ['tools/list has 148 read-only tools', async () => {
     const { tools } = await rpc('tools/list');
-    if (tools.length < 145) throw new Error(`only ${tools.length} tools`);
+    if (tools.length < 148) throw new Error(`only ${tools.length} tools`);
     const notReadOnly = tools.filter((tool) => tool.annotations?.readOnlyHint !== true).map((tool) => tool.name);
     if (notReadOnly.length) throw new Error(`missing readOnlyHint: ${notReadOnly.join(', ')}`);
     if (!tools.some((tool) => tool.name === 'estimate_filing_dates')) throw new Error('estimate_filing_dates alias missing');

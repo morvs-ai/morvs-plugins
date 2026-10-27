@@ -9,7 +9,7 @@ The public [MORVS and Voidly dataset catalog](https://morvs.ai/voidly/datasets.j
 
 ## Workflow
 
-1. Fetch the catalog through an available read-only HTTPS tool, such as Claude Code WebFetch or Codex web.run. Search entries by topic, name, ID, and description. Do not invent a catalog search MCP tool; none appears in the 2026-10-26 live 145-tool list.
+1. Fetch the catalog through an available read-only HTTPS tool, such as Claude Code WebFetch or Codex web.run. Search entries by topic, name, ID, and description. Do not invent a catalog search MCP tool; none appears in the 2026-10-27 live 148-tool list.
 2. For each relevant entry, record the landing page, JSON endpoint, extra endpoints, description, counts, build date or observed-at time, and stated license or rights. Follow the entry's endpoint and source/provenance links before claiming current coverage. A catalog count is a dated observation, not a live promise.
 3. Read license and rights at both catalog and entry level. For entries derived from third-party material, follow upstream terms; a compilation license does not automatically cover raw source data. State attribution and commercial-reuse limits only when verified at the linked terms.
 4. For a federal data hub source found through an entity, call `resolve` with a ticker, CIK, or name to inspect the available-in map, then call `dataset_freshness` with `{}` for source-specific cadence, last successful observation, and indexed-content watermark. Do not apply that freshness result to the static catalog entries unless the dataset is actually represented in the returned row.
