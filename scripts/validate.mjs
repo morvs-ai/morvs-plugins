@@ -6,7 +6,7 @@ import { fileURLToPath } from 'node:url';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const pluginRoot = join(root, 'plugins/morvs');
-const snapshotPath = join(root, 'scripts/tools-2026-10-27a.json');
+const snapshotPath = join(root, 'scripts/tools-2026-10-27b.json');
 const errors = [];
 const assert = (condition, message) => {
   if (!condition) errors.push(message);
@@ -236,10 +236,10 @@ async function toolsFromServer() {
   } catch (error) {
     const offline = error instanceof TypeError || error?.name === 'TimeoutError' || /HTTP 50[234]/.test(error.message);
     if (!offline) throw error;
-    const snapshot = readJson('scripts/tools-2026-10-27a.json');
+    const snapshot = readJson('scripts/tools-2026-10-27b.json');
     const tools = snapshot?.result?.tools;
     if (!Array.isArray(tools) || !tools.every((tool) => isString(tool?.name))) throw new Error('Bundled tools snapshot is invalid');
-    console.log(`LIVE MCP UNAVAILABLE (${error.message}); using bundled 2026-10-27a tools/list snapshot (${tools.length} tools).${initialized ? '' : ' Initialize not verified live.'}`);
+    console.log(`LIVE MCP UNAVAILABLE (${error.message}); using bundled 2026-10-27b tools/list snapshot (${tools.length} tools).${initialized ? '' : ' Initialize not verified live.'}`);
     return new Set(tools.map((tool) => tool.name));
   }
 }
