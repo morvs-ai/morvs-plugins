@@ -493,5 +493,12 @@
   },
   "drug_money_agreements": {
     "company": "Novo"
-  }
+  },
+  "who_gets_your_data_lookup": {
+    "query": "Chevy"
+  },
+  "who_gets_your_data_handoffs": {
+    "legal_status": "finding"
+  },
+  "who_gets_your_data_summary": {}
 }
