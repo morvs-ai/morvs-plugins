@@ -507,5 +507,17 @@
   },
   "who_gets_your_data_government_award": {
     "piid": "70CTD026FR0000025"
+  },
+  "what_your_pension_owns": {
+    "fund": "New York State Common Retirement Fund"
+  },
+  "what_your_pension_owns_fund": {
+    "fund": "CalPERS"
+  },
+  "bought_by_your_police": {
+    "government": "Chicago"
+  },
+  "bought_by_your_police_vendor": {
+    "vendor": "Cellebrite"
   }
 }
