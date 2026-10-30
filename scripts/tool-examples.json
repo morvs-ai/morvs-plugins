@@ -519,5 +519,21 @@
   },
   "bought_by_your_police_vendor": {
     "vendor": "Cellebrite"
+  },
+  "agent_access_check_url": {
+    "url": "https://www.ilga.gov/legislation/",
+    "product_token": "GPTBot"
+  },
+  "agent_access_route": {
+    "institution_or_host": "www.ilga.gov"
+  },
+  "agent_access_institution": {
+    "query": "www.usda.gov"
+  },
+  "agent_access": {
+    "slice": "legislature"
+  },
+  "agent_access_changes": {
+    "since": "2026-10-30"
   }
 }
